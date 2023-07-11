@@ -56,41 +56,33 @@ class _CustomInfoWindowExampleState extends State<CustomInfoWindowExample> {
           _customInfoWindowController.addInfoWindow!(
             Column(
               children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.school,
-                            color: Colors.blue,
-                            size: 30,
-                          ),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          Expanded(
-                            child: RichText(
-                              textAlign: TextAlign.center,
-                              text: TextSpan(
-                                text: "Universidade Federal da Paraíba",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.copyWith(
-                                      color: Colors.black,
-                                    ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.school,
+                          color: Colors.blue,
+                          size: 30,
+                        ),
+                        const SizedBox(
+                          width: 8.0,
+                        ),
+                        Text(
+                          "Universidade Federal da Paraíba",
+                          textAlign: TextAlign.center,
+                          style:
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    color: Colors.black,
+                                  ),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -129,9 +121,7 @@ class _CustomInfoWindowExampleState extends State<CustomInfoWindowExample> {
             ),
           ),
           CustomInfoWindowMap(
-            (top, left, width, height) => null,
             controller: _customInfoWindowController,
-            height: 90,
             width: 150,
             offset: 50,
           )

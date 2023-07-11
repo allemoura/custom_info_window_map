@@ -42,21 +42,22 @@ class CustomInfoWindowMap extends StatefulWidget {
   final double offset;
 
   /// Height of [CustomInfoWindowMap].
-  final double height;
+  final double? height;
 
   /// Width of [CustomInfoWindowMap].
   final double width;
 
-  final Function(double top, double left, double width, double height) onChange;
+  final Function(double top, double left, double width, double height)?
+      onChange;
 
-  const CustomInfoWindowMap(
-    this.onChange, {super.key, 
+  const CustomInfoWindowMap({
+    super.key,
     required this.controller,
+    this.onChange,
     this.offset = 50,
-    this.height = 50,
+    this.height,
     this.width = 100,
   })  : assert(offset >= 0),
-        assert(height >= 0),
         assert(width >= 0);
 
   @override
@@ -93,13 +94,13 @@ class _CustomInfoWindowMapState extends State<CustomInfoWindowMap> {
     double left =
         (screenCoordinate.x.toDouble() / devicePixelRatio) - (widget.width / 2);
     double top = (screenCoordinate.y.toDouble() / devicePixelRatio) -
-        (widget.offset + widget.height);
+        (widget.offset * 2.7);
     setState(() {
       _showNow = true;
       _leftMargin = left;
       _topMargin = top;
     });
-    widget.onChange.call(top, left, widget.width, widget.height);
+    widget.onChange?.call(top, left, widget.width, widget.height ?? 0);
   }
 
   /// Assign the [Widget] and [Marker]'s [LatLng].
